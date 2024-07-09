@@ -1,25 +1,30 @@
 # DOTFILES
 
-Here is my dotfiles
+Here is my dotfiles, most of it still WIP.
+There may be some "lost" files that will not be uploaded.
 
 A list of the things I'm ==Using== and it's info
 
 | InUse |   Package   |       Description       |
 |-------|-------------|-------------------------|
-|  YES  | Yambar      | [+Info](https://github.com/abiES76/dotfiles?tab=readme-ov-file#yambar) search labels (w/wofi) - sway/i3 ws - app title - ram + vol status - local ip - date and time - power label (w/wlogout) |
-|  YES  | Sway        | Normal as far as I know |
-|  YES  | Fnott       | +Info - B&W               |
-|  YES  | Wofi        | +Info - Horizontal B&W    |
-|  YES  | Wlogout     | +Info - 1 Lane - Red      |
-|  NO   | Rofi        | A link to an image      |
-|  NO   | Polybar     | A link to an image      |
-|  NO   | I3          | Not in repo/Not using   |
+|  YES  | [Yambar](https://codeberg.org/dnkl/yambar)      | [+Info](https://github.com/abiES76/dotfiles?tab=readme-ov-file#yambar) search labels (w/wofi) - sway/i3 ws - app title - ram + vol status - local ip - date and time - power label (w/wlogout) |
+|  YES  | [Sway](https://github.com/swaywm/sway)        | Normal as far as I know |
+|  YES  | [Fnott](https://codeberg.org/dnkl/fnott)       | +Info - B&W               |
+|  YES  | [Wofi](https://sr.ht/~scoopta/wofi/)        | +Info - Horizontal B&W    |
+|  YES  | [Wlogout](https://github.com/ArtsyMacaw/wlogout)     | +Info - 1 Lane - Red      |
+|  NO   | [Rofi](https://github.com/davatorium/rofi)        | A link to an image      |
+|  NO   | [Polybar](https://github.com/polybar/polybar)     | A link to an image      |
+|  NO   | [I3](https://github.com/i3/i3)          | Not in repo/Not using   |
 
 ## Yambar
 
 ![Yambar Img](./images/20240709_02h24m16s_grim.png)
 
 Todo:
-[] Disk Usage Script
-[] Scrollable Volume Script 
-[] New Date&Time Label + Script
+- [ ] Disk Usage Script
+- [ ] Scrollable Volume Script 
+- [ ] New Date&Time Label + Script
+
+## Polybar
+
+![Polybar Img](./images/Polybar.png)
