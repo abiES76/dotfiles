@@ -19,3 +19,7 @@ A list of the things I'm ==Using== and it's info
 
 ![Yambar Img](./images/20240709_02h24m16s_grim.png)
 
+Todo:
+[] Disk Usage Script
+[] Scrollable Volume Script 
+[] New Date&Time Label + Script
