@@ -1,0 +1,142 @@
+# Typical laptop setup, with wifi, brightness, battery etc, for
+# i3/Sway.
+
+# For X11/i3, you'll want to replace calls to swaymsg with i3-msg, and
+# the sway-xkb module with the xkb module.
+
+# fonts we'll be re-using here and there
+awesome: &awesome Font Awesome 6 Free:style=solid:pixelsize=14
+awesome_brands: &awesome_brands Font Awesome 6 Brands:pixelsize=16
+
+std_underline: &std_underline {underline: { size: 2, color: ff0000ff}}
+
+# This is THE bar configuration
+bar:
+  height: 22
+  location: top
+  spacing: 0
+  margin: 4
+
+  # Default font
+  font: monospace:pixelsize=12
+
+  foreground: 151515ff
+  background: 151515ff
+
+  border:
+    width: 4
+    color: 151515ff
+    margin: 0
+    top-margin: 0
+
+  left:
+    - label:
+        content:
+          string: {text: S, margin: 10, on-click: "wofi --show drun --yoffset 0 --prompt Search", deco: {stack: [background: {color: 95a86bff}]}}
+    - label:
+        content:
+          string: {text: R, margin: 10, on-click: "wofi --show run --yoffset 0 --prompt Run", deco: {stack: [background: {color: 889d59ff}]}}
+    - i3:
+        anchors: # Not used (directly) by f00bar; used here to avoid duplication
+          - string: &i3_common {margin: 10, on-click: "swaymsg --quiet workspace {name}"}
+          - string: &default {<<: *i3_common, text: "{name}"}
+          - focused: &focused
+              foreground: f5f5f5ff
+              deco: {stack: [background: {color: 7b9246ff}]}
+          - invisible: &invisible
+              deco: {stack: [background: {color: f5f5f5ff}]}
+          - urgent: &urgent
+              deco: {stack: [background: {color: d3a04dff}]}
+          - map: &i3_mode
+              default:
+                - string:
+                    margin: 5
+                    text: "{mode}"
+                    deco: {background: {color: cc421dff}}
+                - empty: {right-margin: 7}
+              conditions:
+                mode == default: {empty: {}}
+        content:
+          "":
+            map:
+              conditions:
+                state == focused:   {string: {<<: [*default, *focused]}}
+                state == unfocused: {string: {<<: *default}}
+                state == invisible: {string: {<<: [*default, *invisible]}}
+                state == urgent:    {string: {<<: [*default, *urgent]}}
+
+    - foreign-toplevel:
+        content:
+          map:
+            conditions:
+              ~activated: {empty: {}}
+              activated:  {string: {text: "{app-id}", margin: 10, deco: {stack: [background: {color: F5F5F5ff}]}}}
+  #center:
+  right:
+    - label:
+        content:
+          string: {text: "MEM", margin: 10, deco: {stack: [background: {color: d3a04dff}]}}
+    - mem:
+        poll-interval: 1000
+        content:
+          - string: {text: "{percent_used}% {used:mb}/{total:mb}", margin: 10, deco: {stack: [background: {color: F5F5F5ff}]}}
+
+    - label:
+        content:
+          string: {text: "", margin: 4}
+
+    - label: 
+        content:
+          string: {text: ETH, margin: 10, deco: {stack: [background: {color: 6c99bbff}]}}
+    - network:
+        poll-interval: 1000
+        content:
+          map:
+            conditions:
+              state == down: {string: {text: DISC, margin: 10, deco: {stack: [background: {color: a54242ff}]}}}
+              state == up:
+                map:
+                  default:
+                    - string: {text: "{ipv4}", margin: 10, deco: {stack: [background: {color: f5f5f5ff}]}}
+                  conditions:
+                    ipv4 == "":
+                    - string: {text: "{ipv4}", margin: 10, deco: {stack: [background: {color: f5f5f5ff}]}}
+    
+    - label:
+        content:
+          string: {text: "", margin: 4}
+          
+    - label: 
+        content:
+          string: {text: VOL, margin: 10, on-click: /bin/sh -c "amixer -q sset Master toggle", deco: {stack: [background: {color: 9f4e85ff}]}}
+    - alsa:
+        card: hw:0
+        mixer: Master
+        content:
+          map:
+            conditions:
+              ~online: {string: {text: oline, font: *awesome, foreground: ff0000ff}}
+              online:
+                map:
+                  # Only Master Toggle
+                  on-click: /bin/sh -c "amixer -q sset Master toggle"
+                  # Speaker not found 
+                  # on-click: /bin/sh -c "amixer -q sset Speaker unmute && amixer -q sset Headphone unmute && amixer -q sset Master toggle"
+                  conditions:
+                    muted: {string: {text: "{percent}%", margin: 10, deco: {stack: [background: {color: 666968ff}]}}}
+                    ~muted: {string: {text: "{percent}%", margin: 10, deco: {stack: [background: {color: f5f5f5ff}]}}}
+
+    - label:
+        content:
+          string: {text: "", margin: 4}
+
+    - label:
+        content:
+          string: {text: "D&T", margin: 10, deco: {stack: [background: {color: 547c99ff}]}}
+    - clock:
+        time-format: "%H:%M %Z"
+        content: {string: {text: "{date} - {time}", margin: 10, deco: {stack: [background: {color: f5f5f5ff}]}}}
+    
+    - label:
+        content:
+          string: {text: "P", on-click: wlogout -b 6, foreground: f5f5f5ff, margin: 10, deco: {stack: [background: {color: a54242ff}]}} 
