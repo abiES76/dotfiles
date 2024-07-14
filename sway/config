@@ -174,7 +174,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
-
+exec /home/$USER/.local/share/dotfiles/scripts/execs.sh
 exec fnott
 exec yambar
 exec "node ./.local/share/arRPC/src"
