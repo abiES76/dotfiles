@@ -1,0 +1,141 @@
+#  __   ____        ______   ______   .__   __.  _______  __    _______ 
+# |  | |___ \      /      | /  __  \  |  \ |  | |   ____||  |  /  _____|
+# |  |   __) |    |  ,----'|  |  |  | |   \|  | |  |__   |  | |  |  __  
+# |  |  |__ <     |  |     |  |  |  | |  . `  | |   __|  |  | |  | |_ |
+# |  |  ___) |    |  `----.|  `--'  | |  |\   | |  |     |  | |  |__| |
+# |__| |____/      \______| \______/  |__| \__| |__|     |__|  \______|
+# From abii dotfiles
+#
+set $mod Mod1 # Alt Key
+
+for_window [class="^.*"] border pixel 3 # Bordersize pixel 3
+
+# I think i don't even need a font var, but just in case
+# font monospace 12
+
+# Mouse+$mod to drag floating windows
+floating_modifier $mod
+
+# Start Alacritty
+bindsym $mod+Return exec alacritty
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Start Wofi drun
+bindsym $mod+d exec --no-startup-id "wofi --show drun --yoffset 0 --prompt Search"
+
+# Focus
+bindsym $mod+a focus parent
+bindsym $mod+space focus mode_toggle
+#bindsym $mod+d focus child
+
+# Focus using cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move using cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+## Splits & Full
+bindsym $mod+h split h # Horizontal
+bindsym $mod+v split v # Vertical
+
+# Layout change
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+f fullscreen toggle
+
+# Toggle tiling/floating
+bindsym $mod+Shift+space floating toggle
+
+# WS Set Names
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# WS Switch
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# WS Move
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# RRE - Reload, Restart and Exit
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-msg -t warning -m 'You pressed the exit shortcut. Do you really want to exit WM? This will end your session.' -B 'Yes, exit the WM' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+
+exec /home/$USER/.local/share/dotfiles/scripts/execi3.sh
+bindsym Ctrl+Print exec "slurp | grim -g -"
+bindsym Print exec "slurp | grim -g - - | wl-copy"
+bindsym $mod+Ctrl+Up exec "amixer set Master -q 5%+"
+bindsym $mod+Ctrl+Down exec "amixer set Master -q 5%-"
+bindsym $mod+Ctrl+Left exec "amixer set Master -q toggle"
+bindsym $mod+l exec "swaylock -c 151515 --font monospace"
+
+input * {
+    xkb_layout "es"
+}
+
+#colors
+# class                 border  backgr. text    indicator child_border
+client.focused          #151515 #151515 #F5F5F5 #151515   #151515
+client.focused_inactive #151515 #151515 #F5F5F5 #151515   #151515
+client.unfocused        #505050 #505050 #D0D0D0 #505050   #505050
+client.urgent           #A53C23 #A53C23 #D3A04D #A53C23   #A53C23

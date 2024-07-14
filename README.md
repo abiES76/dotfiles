@@ -37,3 +37,4 @@ Todo:
 
 ## [Polybar](https://github.com/abiES76/dotfiles/tree/main/polybar)
 ![Polybar Img](./images/Polybar.png)
+
