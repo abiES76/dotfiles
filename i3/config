@@ -19,13 +19,13 @@ for_window [class="^.*"] border pixel 3
 floating_modifier $mod
 
 # Start Alacritty
-bindsym $mod+Return exec foot
+bindsym $mod+Return exec alacritty
 
 # Kill focused window
 bindsym $mod+Shift+q kill
 
 # Start Rofi drun
-bindsym $mod+d exec --no-startup-id "rofi --show drun"
+bindsym $mod+d exec --no-startup-id "rofi -show drun"
 
 # Focus
 bindsym $mod+a focus parent
@@ -101,12 +101,6 @@ bindsym $mod+Shift+e exec "i3-msg -t warning -m 'You pressed the exit shortcut. 
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
@@ -120,15 +114,16 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# Custom binds
 
-exec /home/$USER/.local/share/dotfiles/scripts/execi3.sh
 bindsym Print exec "flameshot gui"
 bindsym $mod+Ctrl+Up exec "amixer set Master -q 5%+"
 bindsym $mod+Ctrl+Down exec "amixer set Master -q 5%-"
 bindsym $mod+Ctrl+Left exec "amixer set Master -q toggle"
-bindsym $mod+l exec "swaylock -c 151515 --font monospace"
+bindsym $mod+l exec "i3lock -c 151515"
+
+# Autostart
+exec /home/$USER/.local/share/dotfiles/scripts/execi3.sh
 
 input * {
     xkb_layout "es"

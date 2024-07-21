@@ -1,5 +1,5 @@
-#/bin/sh
-exec dunst
-exec polybar
-exec "node ./.local/share/arRPC/src"
-exec "feh /home/abii/Pictures/Wallpaper/daniel-koponyas-UZ_XSUXJ2Hg-unsplashmod.jpg --bg-scale"
+#!/bin/sh
+/bin/dunst |
+/bin/polybar | 
+/bin/node $HOME/.local/share/arRPC/src |
+/bin/feh --bg-scale $HOME/Pictures/Wallpaper/daniel-koponyas-UZ_XSUXJ2Hg-unsplashmod.jpg

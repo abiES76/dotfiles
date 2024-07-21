@@ -118,7 +118,7 @@ bar:
                   # Speaker not found 
                   # on-click: /bin/sh -c "amixer -q sset Speaker unmute && amixer -q sset Headphone unmute && amixer -q sset Master toggle"
                   conditions:
-                    muted: {string: {text: "{percent}%", margin: 10, deco: {stack: [background: {color: 666968ff}]}}}
+                    muted: {string: {text: "{percent}%", margin: 10, deco: {stack: [background: {color: A54242ff}]}}}
                     ~muted: {string: {text: "{percent}%", margin: 10, deco: {stack: [background: {color: f5f5f5ff}]}}}
 
     - label:
