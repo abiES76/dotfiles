@@ -22,6 +22,7 @@ button:focus, button:active, button:hover {
 	outline-style: none;
 }
 
+/*Sadly, in CSS you just can't use the $USER variable, so you should just copy the content of the sources folder to the path below*/
 #lock {
     background-image: image(url("/usr/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
 }

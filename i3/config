@@ -1,29 +1,31 @@
-#  __   ____        ______   ______   .__   __.  _______  __    _______ 
-# |  | |___ \      /      | /  __  \  |  \ |  | |   ____||  |  /  _____|
-# |  |   __) |    |  ,----'|  |  |  | |   \|  | |  |__   |  | |  |  __  
-# |  |  |__ <     |  |     |  |  |  | |  . `  | |   __|  |  | |  | |_ |
-# |  |  ___) |    |  `----.|  `--'  | |  |\   | |  |     |  | |  |__| |
-# |__| |____/      \______| \______/  |__| \__| |__|     |__|  \______|
-# From abii dotfiles
+#  
+#   ____ ____ _________ ____ ____ ____ ____ ____ ____ 
+#  ||I |||3 |||       |||C |||O |||N |||F |||I |||G ||
+#  ||__|||__|||_______|||__|||__|||__|||__|||__|||__||
+#  |/__\|/__\|/_______\|/__\|/__\|/__\|/__\|/__\|/__\|
+#  _From abii dotfiles
 #
-set $mod Mod1 # Alt Key
 
-for_window [class="^.*"] border pixel 3 # Bordersize pixel 3
+# Alt Key
+set $mod Mod1 
 
-# I think i don't even need a font var, but just in case
+# Bordersize pixel 3
+for_window [class="^.*"] border pixel 3 
+
+# I think i don't even need to define the font, but just in case, there it is..
 # font monospace 12
 
 # Mouse+$mod to drag floating windows
 floating_modifier $mod
 
 # Start Alacritty
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec foot
 
 # Kill focused window
 bindsym $mod+Shift+q kill
 
-# Start Wofi drun
-bindsym $mod+d exec --no-startup-id "wofi --show drun --yoffset 0 --prompt Search"
+# Start Rofi drun
+bindsym $mod+d exec --no-startup-id "rofi --show drun"
 
 # Focus
 bindsym $mod+a focus parent
@@ -122,8 +124,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 
 exec /home/$USER/.local/share/dotfiles/scripts/execi3.sh
-bindsym Ctrl+Print exec "slurp | grim -g -"
-bindsym Print exec "slurp | grim -g - - | wl-copy"
+bindsym Print exec "flameshot gui"
 bindsym $mod+Ctrl+Up exec "amixer set Master -q 5%+"
 bindsym $mod+Ctrl+Down exec "amixer set Master -q 5%-"
 bindsym $mod+Ctrl+Left exec "amixer set Master -q toggle"

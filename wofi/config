@@ -1,11 +1,11 @@
-width=1359
+width=1366 # I just use my screen resolution in here
 height=10
 mode=drun
 colors=colors
 filter_rate=100
 allow_markup=true
 no_actions=true
-halign=up
+halign=fill
 orientation=horizontal
 content_halign=fill
 drun-display_generic=true

@@ -1,16 +1,11 @@
-# Typical laptop setup, with wifi, brightness, battery etc, for
-# i3/Sway.
+#    ____ ____ ____ ____ ____ ____ 
+#   ||Y |||A |||M |||B |||A |||R ||
+#   ||__|||__|||__|||__|||__|||__||
+#   |/__\|/__\|/__\|/__\|/__\|/__\|
+#   _From abii dotfiles
+#   _Adapted from laptop example config in yambar repos.
+#
 
-# For X11/i3, you'll want to replace calls to swaymsg with i3-msg, and
-# the sway-xkb module with the xkb module.
-
-# fonts we'll be re-using here and there
-awesome: &awesome Font Awesome 6 Free:style=solid:pixelsize=14
-awesome_brands: &awesome_brands Font Awesome 6 Brands:pixelsize=16
-
-std_underline: &std_underline {underline: { size: 2, color: ff0000ff}}
-
-# This is THE bar configuration
 bar:
   height: 22
   location: top
@@ -115,7 +110,7 @@ bar:
         content:
           map:
             conditions:
-              ~online: {string: {text: oline, font: *awesome, foreground: ff0000ff}}
+              ~online: {string: {text: oline, foreground: ff0000ff}}
               online:
                 map:
                   # Only Master Toggle

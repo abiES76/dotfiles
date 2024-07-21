@@ -1,4 +1,11 @@
-# See dunst(5) for all configuration options
+#    ____ ____ ____ ____ ____ 
+#   ||D |||U |||N |||S |||T ||
+#   ||__|||__|||__|||__|||__||
+#   |/__\|/__\|/__\|/__\|/__\|
+#   _From abii dotfiles
+#   _Not much was modified in here, only color and not much more
+#   _Most of the variables are the default ones if i'm right
+#   _See dunst(5) for all configuration options
 
 [global]
     ### Display ###
