@@ -21,13 +21,13 @@ Make sure to change the terminal value to something you use if you aren't using 
 The scripts folder contains the "scripts" that I use to execute thing at the start.
 
 ## [Fnott](https://github.com/abiES76/dotfiles/tree/main/fnott)
-![Fnott Img](./images/fnott.png)
+![Fnott Img](./images/fnott.webp)
 
 ## [Polybar](https://github.com/abiES76/dotfiles/tree/main/polybar)
-![Polybar Img](./images/Polybar.png)
+![Polybar Img](./images/Polybar.webp)
 
 ## [Rofi](https://github.com/abiES76/dotfiles/tree/main/rofi)
-![Rofi Img](./images/Rofi.png)
+![Rofi Img](./images/Rofi.webp)
 In order to show the correct drun theme, you should copy/move the dmenu.rasi file to the rofi root folder.
 
 This is an example, but you can use it if you are in the rofi folder.
@@ -35,7 +35,7 @@ This is an example, but you can use it if you are in the rofi folder.
 `cp ./dmenu.rasi /usr/share/rofi/theme`
 
 ## [Wlogout](https://github.com/abiES76/dotfiles/tree/main/wlogout)
-![wlogout Img](./images/wlogout.png)
+![wlogout Img](./images/wlogout.webp)
 In order to show the white icons, you should copy/move the ones in the directory and paste them in the root one.
 
 This is an example, but you can use it if you are in the wlogout folder.
@@ -43,13 +43,13 @@ This is an example, but you can use it if you are in the wlogout folder.
 `cp ./sources/* /usr/share/wlogout/icons/`
 
 ## [Wofi](https://github.com/abiES76/dotfiles/tree/main/wofi)
-![Wofi Drun Img](./images/drunWofi.png)
-![Wofi Run Img](./images/runWofi.png)
+![Wofi Drun Img](./images/drunWofi.webp)
+![Wofi Run Img](./images/runWofi.webp)
 You should adjust the width of the wofi bar in order to use it bellow the yambar.
 I use my screen resolution to do that.
 
 ## [Yambar](https://github.com/abiES76/dotfiles/tree/main/yambar)
-![Yambar Img](./images/yambar.png)
+![Yambar Img](./images/yambar.webp)
 
 Todo:
 - [ ] Disk Usage Script

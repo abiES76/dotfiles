@@ -4,31 +4,61 @@
 #   ||__|||__|||__|||__|||_______|||__|||__|||__|||__|||__|||__||
 #   |/__\|/__\|/__\|/__\|/_______\|/__\|/__\|/__\|/__\|/__\|/__\|
 #   _From abii dotfiles
+#   _Adapted from the base I3 config file.
+#
+## Technical things
+# Mod Key, I selected the Alt.
+set $mod Mod1 
+
+# Keyboard Layout
+input * {
+    xkb_layout "latam"
+}
 
 xwayland enable
 
-#bordersize pixel 3
+## Custom
+# Keybinds
+bindsym Ctrl+Print exec "slurp | grim -g -"
+bindsym Shift+Print exec "slurp | grim -g - - | wl-copy"
+bindsym Print exec "grim"
+bindsym $mod+Ctrl+Up exec "amixer set Master -q 5%+"
+bindsym $mod+Ctrl+Down exec "amixer set Master -q 5%-"
+bindsym $mod+Ctrl+Left exec "amixer set Master -q toggle"
+bindsym $mod+l exec "swaylock -c 151515 --font monospace"
+
+# Autostart
+exec $HOME/.local/share/dotfiles/scripts/execsway.sh
+exec_always dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK 
+
+## Appearence 
+# Bordersize pixel 3
 for_window [class="^.*"] border pixel 3
 
-# Alt Key
-set $mod Mod1 
+# Colors
+# class                 border  backgr. text    indicator child_border
+client.focused          #151515 #151515 #F5F5F5 #151515   #151515
+client.focused_inactive #151515 #151515 #F5F5F5 #151515   #151515
+client.unfocused        #505050 #505050 #D0D0D0 #505050   #505050
+client.urgent           #A53C23 #A53C23 #D3A04D #A53C23   #A53C23
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+## Native Keybinds
+# Mouse+$mod to drag floating windows to wanted position
 floating_modifier $mod
 
 # Start terminal
 bindsym $mod+Return exec foot
 
-# kill focused window
+# Kill focused
 bindsym $mod+Shift+q kill
 
 # Start Wofi (a program launcher)
-bindsym $mod+d exec --no-startup-id "wofi --show drun --yoffset 0 --prompt Search"
+bindsym $mod+w exec --no-startup-id "wofi --show drun --yoffset 0 --prompt Search"
 
 # Focus
 bindsym $mod+a focus parent
 bindsym $mod+space focus mode_toggle
-#bindsym $mod+d focus child
+bindsym $mod+d focus child
 
 # Focus using cursor keys:
 bindsym $mod+Left focus left
@@ -46,7 +76,7 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+h split h # Horizontal
 bindsym $mod+v split v # Vertical
 
-# Layout change
+# Window Layout change
 bindsym $mod+s layout stacking
 bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
@@ -55,6 +85,28 @@ bindsym $mod+f fullscreen toggle
 # Toggle tiling/floating
 bindsym $mod+Shift+space floating toggle
 
+# RRE - Reload, Restart and Exit
+bindsym $mod+Shift+c reload
+# restart sway inplace (Not working, that's why it is commented)
+# bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit WM? This will end your session.' -B 'Yes, exit the WM' 'swaymsg exit'"
+
+# Windows resize (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+## Workspaces
 # WS Set Names
 set $ws1 "1"
 set $ws2 "2"
@@ -90,50 +142,3 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
-
-# RRE - Reload, Restart and Exit
-bindsym $mod+Shift+c reload
-# restart sway inplace (Not working, that's why it is commented)
-# bindsym $mod+Shift+r restart
-# exit WM (logs you out of your X session)
-bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit WM? This will end your session.' -B 'Yes, exit the WM' 'swaymsg exit'"
-
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
-
-# Custom binds
-bindsym Ctrl+Print exec "slurp | grim -g -"
-bindsym Shift+Print exec "slurp | grim -g - - | wl-copy"
-bindsym Print exec "grim"
-bindsym $mod+Ctrl+Up exec "amixer set Master -q 5%+"
-bindsym $mod+Ctrl+Down exec "amixer set Master -q 5%-"
-bindsym $mod+Ctrl+Left exec "amixer set Master -q toggle"
-bindsym $mod+l exec "swaylock -c 151515 --font monospace"
-
-# Autostart
-exec $HOME/.local/share/dotfiles/scripts/execsway.sh
-
-input * {
-    xkb_layout "es"
-}
-
-#colors
-# class                 border  backgr. text    indicator child_border
-client.focused          #151515 #151515 #F5F5F5 #151515   #151515
-client.focused_inactive #151515 #151515 #F5F5F5 #151515   #151515
-client.unfocused        #505050 #505050 #D0D0D0 #505050   #505050
-client.urgent           #A53C23 #A53C23 #D3A04D #A53C23   #A53C23
